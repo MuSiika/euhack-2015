@@ -4,6 +4,7 @@ React = require('react/addons')
 ReactDOM = require('react-dom')
 reactRouter = require('react-router')
 Header = require('./header')
+CodeEditor = require('./CodeEditor')
 
 {Router, Route, IndexRoute} = reactRouter
 
@@ -12,9 +13,9 @@ Home = React.createClass
     <div className="column">
       <div classNakme="ui segment">
         <h1 className="ui header">
-          <span>Get to work!</span>
           <div className="sub header">
-            Make sure to check out README.md for development notes.
+            Moi
+            <CodeEditor />
           </div>
         </h1>
       </div>
