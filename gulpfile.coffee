@@ -77,13 +77,11 @@ gulp.task 'copy', ->
 
 gulp.task 'build', ['clean', 'copy', 'css', 'js']
 
-server_main = "#{src_path}/server.coffee"
+server_main = "#{src_path}/server.js"
 gulp.task 'server', ->
   nodemon
     script: server_main
     watch: [server_main]
-    execMap:
-      coffee: "#{modules_path}/.bin/coffee"
     env:
       PORT: process.env.PORT or 3000
 
