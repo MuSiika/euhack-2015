@@ -33,14 +33,21 @@ export default React.createClass({
 
   },
 
+  _source : function( source ) {
+    source = "setInstrument(" + this.state.instrument + ");\n" + source;
+    source += "\nreset();";
+    return source;
+  },
+
   setInstrument: function(event, index, item ) {
       this.setState( { instrument : item.val } );
   },
 
   script: function() {
+
     var source = this.state.source;
-    source = "setInstrument(" + this.state.instrument + ");" + source;
-    source += "reset();";
+    source = this._source( source );
+
     eval( source );
     this.setState( { changed : false } )
   },
@@ -49,10 +56,10 @@ export default React.createClass({
     this.setState( { submitting: "inline" } );
 
     var source = this.state.source;
-    source = "setInstrument(" + this.state.instrument + ");" + source;
-    source += "reset();";
+    source = this._source( source );
 
     var self = this;
+
     $.post( '/save', { 'source' : source }, function( res ) {
       console.log( res );
       // sort of hack
