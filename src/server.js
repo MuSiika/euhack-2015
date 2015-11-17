@@ -21,6 +21,16 @@ app.use(express["static"](dist));
 
 app.set("port", process.env.PORT || 3000);
 
+// initialize database
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database(':memory:');
+
+db.serialize(function() {
+
+  db.run('CREATE TABLE scripts (uid TEXT, script TEXT)');
+
+});
+
 /*
 app.use(function(req, res, next) {
   var err;
@@ -48,15 +58,28 @@ app.use(function(err, req, res, next) {
 });*/
 
 app.post('/save', function(req, res){
-  console.log( req.body.source );
+  var source = req.body.source;
+
+  console.log( ['none', source ] );
+
+  db.run("INSERT INTO scripts VALUES (?,?)", ['none', source ] );
+
   res.send('');
 });
 
 app.get('/load', function(req, res){
 
-  var debug = [ 'alert("Kissa;")', 'alert("Koira");' ];
+  db.all("SELECT * FROM scripts", function(err, rows) {
 
-  res.send( debug );
+        var r = [];
+
+        rows.forEach(function (row) {
+            r.push( row.script );
+        });
+
+        res.send( r );
+    });
+
 });
 
 server = http.createServer(app);
