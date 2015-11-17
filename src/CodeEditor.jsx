@@ -9,11 +9,11 @@ require('brace/theme/github')
 export default React.createClass({
 
   getInitialState: function() {
-    return { source : 'alert("cats!");' };
+    return { source : 'alert("cats!");', changed : false };
   },
 
   code: function( text ) {
-    this.setState( { source : text } );
+    this.setState( { source : text, changed: true } );
     return false;
 
   },
@@ -22,6 +22,7 @@ export default React.createClass({
     var source = this.state.source;
     console.log( source );
     eval( source );
+    this.setState( { changed : false } )
   },
 
   submit: function() {
@@ -32,7 +33,7 @@ export default React.createClass({
     return <div>
       <AceEditor mode="javascript" value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
       <button onClick={this.script}>Test</button>
-      <button onClick={this.submit}>Ready</button>
+      <button onClick={this.submit} disabled={this.state.changed}>Ready</button>
     </div>
   }
 });
