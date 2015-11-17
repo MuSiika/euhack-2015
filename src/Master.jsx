@@ -25,7 +25,7 @@ export default React.createClass({
       for( var i in res ) {
         scripts[ i ] = eval( res[i] );
       }
-      
+
       self.setState( { scripts : res });
     } )
   },
@@ -34,10 +34,10 @@ export default React.createClass({
     var scriptBlocks = this.state.scripts.map(function(script, index) {
       console.log(script);
       return (
-        <div key={index}>
-        <AceEditor mode="javascript" value={script} theme="github" editorProps={{$blockScrolling: true}} id={index} height={30}/>
+        <div id={'ace-' + index} key={index} style={{'height': '200px'}}>
+        <AceEditor mode="javascript" value={script} theme="github" editorProps={{$blockScrolling: true}} name={'ace-' + index} height={30}/>
       </div>
-        
+
       );
     });
     return <div>
