@@ -8,6 +8,8 @@ require('brace/theme/github')
 
 var $ = require('jquery') // needed for ajax
 
+const RaisedButton = require('material-ui/lib/raised-button');
+
 export default React.createClass({
 
   getInitialState: function() {
@@ -36,8 +38,8 @@ export default React.createClass({
   render: function() {
     return <div>
       <AceEditor mode="javascript" value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
-      <button onClick={this.script}>Test</button>
-      <button onClick={this.submit} disabled={this.state.changed}>Ready</button>
+      <RaisedButton onClick={this.script} primary={true} label="Test" />
+      <RaisedButton onClick={this.submit} disabled={this.state.changed} label="Ready" />
     </div>
   }
 });
