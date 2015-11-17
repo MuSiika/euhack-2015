@@ -6,6 +6,8 @@ var AceEditor  = require('react-ace');
 require('brace/mode/javascript')
 require('brace/theme/github')
 
+var $ = require('jquery') // needed for ajax
+
 export default React.createClass({
 
   getInitialState: function() {
@@ -26,7 +28,9 @@ export default React.createClass({
   },
 
   submit: function() {
-
+    $.get( '/save', {}, function( res ) {
+      console.log( res );
+    } )
   },
 
   render: function() {

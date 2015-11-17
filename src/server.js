@@ -21,6 +21,7 @@ app.use(express["static"](dist));
 
 app.set("port", process.env.PORT || 3000);
 
+/*
 app.use(function(req, res, next) {
   var err;
   err = new Error("Not Found");
@@ -44,6 +45,10 @@ app.use(function(err, req, res, next) {
   return res.send({
     message: err.message
   });
+});*/
+
+app.get('/save', function(req, res){
+  res.send('hello world');
 });
 
 server = http.createServer(app);
