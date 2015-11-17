@@ -35,7 +35,7 @@ About = React.createClass
       <div className="ui segment">
         <h2 className="ui black header"> Creative teaching with MuSiika </h2>
 
-        
+
         <p>MuSiika is a tool that combines the music education with a development
         of pupils' programming skills.</p>
 
@@ -104,7 +104,7 @@ Main = React.createClass
   render: ->
     <div>
       <Header/>
-      <div className="ui page grid">
+      <div id="mainpage" className="ui page grid">
         { @props.children }
       </div>
     </div>
