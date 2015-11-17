@@ -24,7 +24,7 @@ const instruments = require('./external/instruments.js');
 export default React.createClass({
 
   getInitialState: function() {
-    return { source : 'addNote("C"); play();', changed : false, submitting: "none", instrument : 1  };
+    return { source : 'addNote("C");\nplay();', changed : false, submitting: "none", instrument : 1  };
   },
 
   code: function( text ) {
