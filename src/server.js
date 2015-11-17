@@ -12,6 +12,13 @@ require("babel/register");
 var dist = path.join(__dirname, '/../dist');
 
 var app = express();
+
+var session = require('express-session')
+app.use(session({
+  name: 'session',
+  secret: 'keyboard cat'
+}))
+
 app.use(logger("dev"));
 
 app.use(bodyParser.json());
@@ -27,7 +34,7 @@ var db = new sqlite3.Database(':memory:');
 
 db.serialize(function() {
 
-  db.run('CREATE TABLE scripts (uid TEXT, script TEXT)');
+  db.run('CREATE TABLE scripts (uid TEXT PRIMARY KEY, script TEXT)');
 
 });
 
@@ -60,9 +67,11 @@ app.use(function(err, req, res, next) {
 app.post('/save', function(req, res){
   var source = req.body.source;
 
-  console.log( ['none', source ] );
+  var uid = req.session.id;
 
-  db.run("INSERT INTO scripts VALUES (?,?)", ['none', source ] );
+  console.log( [ uid , source ] );
+
+  db.run("INSERT OR REPLACE INTO scripts VALUES (?,?)", ['none', source ] );
 
   res.send('');
 });
