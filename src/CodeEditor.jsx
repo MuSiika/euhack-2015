@@ -24,11 +24,11 @@ const instruments = require('./external/instruments.js');
 export default React.createClass({
 
   getInitialState: function() {
-    return { source : 'addNote("C"); play(); reset();', changed : false, submitting: "none" };
+    return { source : 'addNote("C"); play();', changed : false, submitting: "none", instrument : 1  };
   },
 
   code: function( text ) {
-    this.setState( { source : text, changed: true, instrument : 1 } );
+    this.setState( { source : text, changed: true } );
     return false;
 
   },
@@ -40,6 +40,7 @@ export default React.createClass({
   script: function() {
     var source = this.state.source;
     source = "setInstrument(" + this.state.instrument + ");" + source;
+    source += "reset();";
     eval( source );
     this.setState( { changed : false } )
   },
