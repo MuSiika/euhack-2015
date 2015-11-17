@@ -15,6 +15,9 @@ export default React.createClass({
           <Link className="item" to="/about">
             About
           </Link>
+          <Link className="item" to="/master">
+            Master UI
+          </Link>
         </div>
       </div>
     </div>

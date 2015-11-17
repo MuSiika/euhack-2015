@@ -52,6 +52,10 @@ app.post('/save', function(req, res){
   res.send('');
 });
 
+app.get('/load', function(req, res){
+  res.send('Hello world');
+});
+
 server = http.createServer(app);
 
 server.listen(app.get("port"), function() {
