@@ -47,8 +47,13 @@ export default React.createClass({
 
   submit: function() {
     this.setState( { submitting: "inline" } );
+
+    var source = this.state.source;
+    source = "setInstrument(" + this.state.instrument + ");" + source;
+    source += "reset();";
+
     var self = this;
-    $.post( '/save', { 'source' : this.state.source }, function( res ) {
+    $.post( '/save', { 'source' : source }, function( res ) {
       console.log( res );
       // sort of hack
       setTimeout( function() {
