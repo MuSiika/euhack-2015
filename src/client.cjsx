@@ -33,25 +33,25 @@ About = React.createClass
   render: ->
     <div className="column">
       <div className="ui segment">
-        <h4 className="ui black header"> Creative teaching with MuSiika </h4>
+        <h2 className="ui black header"> Creative teaching with MuSiika </h2>
 
-        <span>
-        MuSiika is a tool that combines the music education with a development
-        of pupils' eskills.<br>
+        
+        <p>MuSiika is a tool that combines the music education with a development
+        of pupils' programming skills.</p>
 
-        Why use Musiika?
-        Musiika supports colaboration skills, creative thinking,
+        <h3>Why use Musiika?</h3>
+        <p>Musiika supports collaboration skills, creative thinking and logical reasoning.</p>
 
-        How is that all possibly? Let us share an example
+        <h3>How is that all possibly? Let us share an example</h3>
 
-        Piece known as "Pachelbel's Canon" was composed by Johann Pachelbel in
+        <p>Piece known as "Pachelbel's Canon" was composed by Johann Pachelbel in
         17th century. It belongs fundamentally to the history of music
         representing the Baroque era. Moreover, it's elements (especially the
         chord progression) can be found in many pop music song. In respect of
         music theory Pachelbel's Canon introduces the technique of canon and
-        ground bass.
+        ground bass.</p>
 
-        We can use MuSiika to introduce this great piece of music in a manner
+        <p>We can use MuSiika to introduce this great piece of music in a manner
         that the pupils can really dive in the logics of music. The teacher can
         divide the class in groups. This supports peer learning and develops
         collaboration skills. Each group will compose Pachelbel's canon of
@@ -61,47 +61,42 @@ About = React.createClass
         another cellos. Composing occurs in terms of simple commands. One can
         program a set of notes and listen the melody created. Ready version is
         sent to the teacher. Teacher can combine different parts and play them
-        simultaneously. The symphony is ready!
+        simultaneously. The symphony is ready!</p>
 
-        The task can be performed at many levels.
-        1) Routine practice of musical notations and programming structures:
+        <p>The task can be performed at many levels.</p>
+
+        <p>1) Routine practice of musical notations and programming structures:
           pupils can converts straight a sheet of music to commands that play
-          the music
-        2) pupils can create melodies of their own. Like in Pachelbel's canon
+          the music</p>
+        <p>2) pupils can create melodies of their own. Like in Pachelbel's canon
         the teacher can set a chord progression that must be followed. That also
-        ensures that separately composed parts will play in harmony.
+        ensures that separately composed parts will play in harmony.</p>
 
-        to  Each member has their own responsibility of their own part.
+        <p>to  Each member has their own responsibility of their own part.
+        Divide and conquer.
+        This provides an environment of learning logical thinking,  programming conditions function</p>
 
+        <p>Music production is strongly connected to technology. The purpose of MuSiika is to enlarge the variety of teaching methods </p>
 
+        <h3>Lesson plan: Music 60 min</h3>
+        <p>Exercise given last week: find a piece that represents the Baroque style)</p>
 
-
-         This provides an environment of learning logical thinking,  programming conditions function
-
-        Music production is strongly connected to technology. As the Even more in Music As the music techThe purpose of MuSiika is to enlarge the variety of teaching methods
-
-        Lesson plan: Music 60 min
-        Exercise given last week: find a piece that represents the Baroque style)
-
-        5 min
-        - Check the exercises
-        - Introduce of Pachelbel's canon in terms of Baroque music
-        15 min
-        - Introduce of the MuSiika tool
-          - Explanation of the basic commands and how does the cooperating work
-        10 min
-        - set up the groups
-          - Each group member should have a part of their own to compose
-        15 min
-        - Group working
-        10 min
-        - Pointing out the chord progression and ground bass, demonstration of
-          the use in pop music (e.g. Oasis - "Don't look back in Anger" )
-        5 min
-        - Exercise: Compose a new part to Pachelbel's Canon
-
-
-        </span>
+        <p>5 min</p>
+        <p>- Check the exercises</p>
+        <p>- Introduce of Pachelbel's canon in terms of Baroque music</p>
+        <p>15 min</p>
+        <p>- Introduce of the MuSiika tool</p>
+        <p>- Explanation of the basic commands and how does the cooperating work</p>
+        <p>10 min</p>
+        <p>- set up the groups</p>
+        <p> - Each group member should have a part of their own to compose</p>
+        <p>15 min</p>
+        <p>- Group working</p>
+        <p>10 min</p>
+        <p>- Pointing out the chord progression and ground bass, demonstration of
+          the use in pop music (e.g. Oasis - "Don't look back in Anger" )</p>
+        <p>5 min</p>
+        <p>- Exercise: Compose a new part to Pachelbel's Canon</p>
       </div>
     </div>
 
