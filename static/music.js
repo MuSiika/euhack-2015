@@ -76,7 +76,7 @@ function convertNoteToNumber(note){
 function addNote(note){
     note = convertNoteToNumber(note);
     if(note <= 127 && note >= 0){
-        notes.push([note]);
+        notes.push([[note], instrument]);
     }
     console.log(notes);
 }
@@ -84,7 +84,7 @@ function addNote(note){
 function __addNote(line, note){
     note = convertNoteToNumber(note);
     if(note <= 127 && note >= 0){
-        notes.push([note]);
+        notes.push([[note], instrument]);
         console.log("Playing line " + line );
     }
     console.log(notes);
@@ -103,7 +103,7 @@ function addChord(chord){
         }
     }
     if(!broken){
-        notes.push(chord);
+        notes.push([chord, instrument]);
     }
 
 }
@@ -131,29 +131,21 @@ function setInstrument(newInstrument){
 
 // Play one note using soundfont
 function soundfontPlay(note){
-
-    for(var i = 0; i < note.length; i++){
-        T.soundfont.play(note[i]);
+    console.log(note);
+    for(var i = 0; i < note[0].length; i++){
+        T.soundfont.setInstrument(note[1]);
+        T.soundfont.play(note[0][i]);
     }
-}
-
-function preload(){
-    var preloadNotes = [];
-    for(var i = 0; i < notes.length; i++){
-        for(var j = 0; j < notes[i].length; j++){
-            preloadNotes.push(notes[i][j]);
-        }
-    }
-    T.soundfont.preload(preloadNotes);
 }
 
 // Play the song
 function play(){
-    preload();
     T.soundfont.setInstrument(instrument);
     for(var i = 0; i < notes.length; i++){
-        if(notes[i].length != 0){
-            setTimeout(soundfontPlay, i*delay, notes[i]);
+        for(var j = 0; j < notes[i][0].length; j++){
+            if(notes[i][0][j].length != 0){
+                setTimeout(soundfontPlay, i*delay, notes[i]);
+            }
         }
     }
 }
