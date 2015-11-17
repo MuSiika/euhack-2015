@@ -47,8 +47,9 @@ app.use(function(err, req, res, next) {
   });
 });*/
 
-app.get('/save', function(req, res){
-  res.send('hello world');
+app.post('/save', function(req, res){
+  console.log( req.body.source );
+  res.send('');
 });
 
 server = http.createServer(app);
