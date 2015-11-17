@@ -11,6 +11,12 @@
 <script src="http://mohayonao.github.io/timbre.js/src/extras/soundfont.js"></script>
 </head>
 <body>
+<script>
+window.onerror = function(msg, url, linenumber) {
+    alert('There is something wrong with your code :(\n'+msg+'\nLine Number: '+linenumber);
+    return true;
+}
+</script>
 <script type="text/javascript" src="music.js"></script>
 <script type="text/javascript" src="client.js"></script>
 </body>
