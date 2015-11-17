@@ -104,7 +104,7 @@ Main = React.createClass
   render: ->
     <div>
       <Header/>
-      <div className="ui page grid">
+      <div id="mainpage" className="ui page grid">
         { @props.children }
       </div>
     </div>
