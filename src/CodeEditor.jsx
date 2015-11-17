@@ -37,9 +37,13 @@ export default React.createClass({
 
   render: function() {
     return <div>
-      <AceEditor mode="javascript" value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
-      <RaisedButton onClick={this.script} primary={true} label="Test" />
-      <RaisedButton onClick={this.submit} disabled={this.state.changed} label="Ready" />
+      <div>
+        <AceEditor mode="javascript" value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
+      </div>
+      <div style={{'margin-top': '10px'}}>
+        <RaisedButton onClick={this.script} primary={true} label="Test" />
+        <RaisedButton onClick={this.submit} disabled={this.state.changed} label="Ready" />
+      </div>
     </div>
   }
 });
