@@ -14,20 +14,14 @@ Master = require('./Master')
 
 Home = React.createClass
   render: ->
-    <div className="column">
-      <div className="ui segment">
-        <h1 className="ui header">
-          <div className="sub header">
-            <CodeEditor />
-          </div>
-        </h1>
-      </div>
-      <div className="ui segment">
-        <h1 className="ui header">
-          <div className="sub header">
-            <Documentation />
-          </div>
-        </h1>
+    <div className="ui vertically divided grid">
+      <div className="two column row">
+        <div className="column">
+          <CodeEditor />
+        </div>
+        <div className="column">
+          <Documentation />
+        </div>
       </div>
     </div>
 
