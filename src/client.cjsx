@@ -7,6 +7,7 @@ reactRouter = require('react-router')
 Header = require('./header')
 
 CodeEditor = require('./CodeEditor')
+Documentation = require('./Documentation')
 Master = require('./Master')
 
 {Router, Route, IndexRoute} = reactRouter
@@ -14,10 +15,17 @@ Master = require('./Master')
 Home = React.createClass
   render: ->
     <div className="column">
-      <div classNakme="ui segment">
+      <div className="ui segment">
         <h1 className="ui header">
           <div className="sub header">
             <CodeEditor />
+          </div>
+        </h1>
+      </div>
+      <div className="ui segment">
+        <h1 className="ui header">
+          <div className="sub header">
+            <Documentation />
           </div>
         </h1>
       </div>
