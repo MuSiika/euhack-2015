@@ -14,7 +14,7 @@ Master = require('./Master')
 
 Home = React.createClass
   render: ->
-    <div className="ui vertically divided grid">
+    <div className="ui vertically horizontally padded divided grid">
       <div className="two column row">
         <div className="column">
           <CodeEditor />
@@ -28,13 +28,7 @@ Home = React.createClass
 Teacher = React.createClass
   render: ->
     <div className="column">
-      <div classNakme="ui segment">
-        <h1 className="ui header">
-          <div className="sub header">
-            <Master />
-          </div>
-        </h1>
-      </div>
+      <Master />
     </div>
 
 About = React.createClass
