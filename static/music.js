@@ -26,10 +26,41 @@ var noteArray = {
     'b'     :   11
 };
 
+var isFlattedOrSharpened = {
+    'c'     :   0,
+    'c#'    :   0,
+    'd'     :   0,
+    'd#'    :   0,
+    'e'     :   0,
+    'f'     :   0,
+    'f#'    :   0,
+    'g'     :   0,
+    'g#'    :   0,
+    'a'     :   0,
+    'a#'    :   0,
+    'b'     :   0
+};
+
 // Add note to noteArray
 function addNote(note){
-    var noteNumber = noteArray[note.toLowerCase()] + ((octave + 1)*12);
-    notes.push(noteNumber);
+    note = note.toLowerCase();
+    var noteNumber = noteArray[note] + ((octave + 1)*12);
+    if(noteNumber == 127 && isFlattedOrSharpened[note] > 0){
+        alert("KÄÄÄK");
+    }else if(noteNumber == 0 && isFlattedOrSharpened[note] < 0){
+        alert("GAAH");
+    }else{
+        noteNumber += isFlattedOrSharpened[note];
+        notes.push(noteNumber);
+    }
+}
+
+function flatten(note){
+    isFlattedOrSharpened[note.toLowerCase()]--;
+}
+
+function sharpen(note){
+    isFlattedOrSharpened[note.toLowerCase()]++;
 }
 
 function setDelay(newDelay){
@@ -64,4 +95,18 @@ function reset(){
     delay = DEFAULT_DELAY;
     octave = DEFAULT_OCTAVE;
     instrument = DEFAULT_INSTRUMENT;
+    isFlattedOrSharpened = {
+    'c'     :   0,
+    'c#'    :   0,
+    'd'     :   0,
+    'd#'    :   0,
+    'e'     :   0,
+    'f'     :   0,
+    'f#'    :   0,
+    'g'     :   0,
+    'g#'    :   0,
+    'a'     :   0,
+    'a#'    :   0,
+    'b'     :   0
+    };
 }
