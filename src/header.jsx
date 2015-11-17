@@ -7,7 +7,7 @@ export default React.createClass({
       <div className="ui page grid">
         <div className="column" style={{paddingBottom: 0}}>
           <Link className="title item" to="/">
-            <b>μsiika</b>
+            <b>Musiika</b>
           </Link>
           <Link className="item" to="/">
             Personal
