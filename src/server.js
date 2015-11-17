@@ -71,7 +71,7 @@ app.post('/save', function(req, res){
 
   console.log( [ uid , source ] );
 
-  db.run("INSERT OR REPLACE INTO scripts VALUES (?,?)", ['none', source ] );
+  db.run("INSERT OR REPLACE INTO scripts VALUES (?,?)", [ uid , source ] );
 
   res.send('');
 });
