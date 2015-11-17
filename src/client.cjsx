@@ -118,6 +118,7 @@ routes =
   <Route path="/" component={Main}>
     <IndexRoute component={Home}/>
     <Route path="about" component={About}/>
+    <Route path="master" component={Teacher}/>
   </Route>
 
 $ ->
