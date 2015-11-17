@@ -1,5 +1,7 @@
 import React from "react/addons"
 
+const RaisedButton = require('material-ui/lib/raised-button');
+
 var $ = require('jquery') // needed for ajax
 
 export default React.createClass({
@@ -16,7 +18,7 @@ export default React.createClass({
 
   render: function() {
     return <div>
-      <button onClick={this.update}>Update</button>
+      <RaisedButton onClick={this.update} primary={true} label="Play concert" />
     </div>
   }
 });
