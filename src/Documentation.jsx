@@ -10,6 +10,8 @@ const CardTitle = require('material-ui/lib/card/card-title');
 const CardText = require('material-ui/lib/card/card-text');
 const CardHeader = require('material-ui/lib/card/card-header');
 
+const ListDivider = require('material-ui/lib/lists/list-divider')
+
 export default React.createClass({
 
   render: function() {
