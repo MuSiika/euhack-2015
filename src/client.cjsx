@@ -25,7 +25,10 @@ About = React.createClass
   render: ->
     <div className="column">
       <div className="ui segment">
-        <h4 className="ui black header">This is the about page.</h4>
+        <h4 className="ui black header">Creative teaching with MuSiika </h4>
+        Musiika is a tool that combines music education with development of
+        pupil's eskills.
+      
       </div>
     </div>
 
