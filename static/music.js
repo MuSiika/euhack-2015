@@ -41,8 +41,7 @@ var isFlattedOrSharpened = {
     'b'     :   0
 };
 
-// Add note to noteArray
-function addNote(note){
+function convertNoteToNumber(note){
     note = note.toLowerCase();
     var noteNumber = noteArray[note] + ((octave + 1)*12);
     if(noteNumber == 127 && isFlattedOrSharpened[note] > 0){
@@ -51,8 +50,23 @@ function addNote(note){
         alert("GAAH");
     }else{
         noteNumber += isFlattedOrSharpened[note];
-        notes.push(noteNumber);
     }
+
+    return noteNumber;
+}
+
+// Add note to noteArray
+function addNote(note){
+    note = convertNoteToNumber(note);
+    notes.push([note]);
+    console.log(notes);
+}
+
+function addChord(chord){
+    for(var i = 0; i < chord.length; i++){
+        chord[i] = convertNoteToNumber(chord[i]);
+    }
+    notes.push(chord);
 }
 
 function flatten(note){
@@ -78,11 +92,24 @@ function setInstrument(newInstrument){
 
 // Play one note using soundfont
 function soundfontPlay(note){
-    T.soundfont.play(note);
+    for(var i = 0; i < note.length; i++){
+        T.soundfont.play(note[i]);
+    }
+}
+
+function preload(){
+    var preloadNotes = [];
+    for(var i = 0; i < notes.length; i++){
+        for(var j = 0; j < notes[i].length; j++){
+            preloadNotes.push(notes[i][j]);
+        }
+    }
+    T.soundfont.preload(preloadNotes);
 }
 
 // Play the song
 function play(){
+    preload();
     T.soundfont.setInstrument(instrument);
     for(var i = 0; i < notes.length; i++){
         setTimeout(soundfontPlay, i*delay, notes[i]);
