@@ -15,12 +15,12 @@ var noteArray = {
     'c-'    :   -1,
     'c'     :   0,
     'c#'    :   1,
-    'd-'    :   1, 
+    'd-'    :   1,
     'd'     :   2,
     'd#'    :   3,
-    'e-'    :   3,    
+    'e-'    :   3,
     'e'     :   4,
-    'f-'    :   4,  
+    'f-'    :   4,
     'f'     :   5,
     'f#'    :   6,
     'g-'    :   6,
@@ -38,12 +38,12 @@ var isFlattedOrSharpened = {
     'c-'    :   0,
     'c'     :   0,
     'c#'    :   0,
-    'd-'    :   0, 
+    'd-'    :   0,
     'd'     :   0,
     'd#'    :   0,
-    'e-'    :   0,    
+    'e-'    :   0,
     'e'     :   0,
-    'f-'    :   0,  
+    'f-'    :   0,
     'f'     :   0,
     'f#'    :   0,
     'g-'    :   0,
@@ -77,7 +77,16 @@ function addNote(note){
     note = convertNoteToNumber(note);
     if(note <= 127 && note >= 0){
         notes.push([note]);
-    }   
+    }
+    console.log(notes);
+}
+
+function __addNote(line, note){
+    note = convertNoteToNumber(note);
+    if(note <= 127 && note >= 0){
+        notes.push([note]);
+        console.log("Playing line " + line );
+    }
     console.log(notes);
 }
 
@@ -85,14 +94,14 @@ function addChord(chord){
     var broken = false;
     for(var i = 0; i < chord.length; i++){
         chord[i] = convertNoteToNumber(chord[i]);
-        if(chord[i] > 127 || chord[i] < 0){ 
+        if(chord[i] > 127 || chord[i] < 0){
             broken = true;
-        }   
+        }
     }
-    if(!broken){ 
+    if(!broken){
         notes.push(chord);
     }
-    
+
 }
 
 function flatten(note){
@@ -153,12 +162,12 @@ function reset(){
     'c-'    :   0,
     'c'     :   0,
     'c#'    :   0,
-    'd-'    :   0, 
+    'd-'    :   0,
     'd'     :   0,
     'd#'    :   0,
-    'e-'    :   0,    
+    'e-'    :   0,
     'e'     :   0,
-    'f-'    :   0,  
+    'f-'    :   0,
     'f'     :   0,
     'f#'    :   0,
     'g-'    :   0,
