@@ -12,6 +12,13 @@ require("babel/register");
 var dist = path.join(__dirname, '/../dist');
 
 var app = express();
+
+var session = require('express-session')
+app.use(session({
+  name: 'session',
+  secret: 'keyboard cat'
+}))
+
 app.use(logger("dev"));
 
 app.use(bodyParser.json());
@@ -20,6 +27,16 @@ app.use(cookieParser());
 app.use(express["static"](dist));
 
 app.set("port", process.env.PORT || 3000);
+
+// initialize database
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database(':memory:');
+
+db.serialize(function() {
+
+  db.run('CREATE TABLE scripts (uid TEXT PRIMARY KEY, script TEXT)');
+
+});
 
 /*
 app.use(function(req, res, next) {
@@ -47,8 +64,31 @@ app.use(function(err, req, res, next) {
   });
 });*/
 
-app.get('/save', function(req, res){
-  res.send('hello world');
+app.post('/save', function(req, res){
+  var source = req.body.source;
+
+  var uid = req.session.id;
+
+  console.log( [ uid , source ] );
+
+  db.run("INSERT OR REPLACE INTO scripts VALUES (?,?)", [ uid , source ] );
+
+  res.send('');
+});
+
+app.get('/load', function(req, res){
+
+  db.all("SELECT * FROM scripts", function(err, rows) {
+
+        var r = [];
+
+        rows.forEach(function (row) {
+            r.push( row.script );
+        });
+
+        res.send( r );
+    });
+
 });
 
 server = http.createServer(app);

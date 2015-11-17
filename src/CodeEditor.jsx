@@ -28,7 +28,7 @@ export default React.createClass({
   },
 
   submit: function() {
-    $.get( '/save', {}, function( res ) {
+    $.post( '/save', { 'source' : this.state.source }, function( res ) {
       console.log( res );
     } )
   },
