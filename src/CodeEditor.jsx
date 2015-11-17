@@ -19,17 +19,20 @@ export default React.createClass({
   },
 
   script: function() {
-    console.log("scripting!");
     var source = this.state.source;
     console.log( source );
-    var f = eval( source );
+    eval( source );
+  },
+
+  submit: function() {
+
   },
 
   render: function() {
     return <div>
       <AceEditor mode="javascript" value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
-      <button onClick={this.script}>Is this ok?</button>
-      <button onClick={this.script}>Submit changes</button>
+      <button onClick={this.script}>Test</button>
+      <button onClick={this.submit}>Ready</button>
     </div>
   }
 });
