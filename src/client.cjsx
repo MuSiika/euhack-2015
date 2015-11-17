@@ -17,7 +17,7 @@ Home = React.createClass
         <div className="column">
           <CodeEditor />
         </div>
-        <div className="column">
+        <div className="aasi">
           <Documentation />
         </div>
       </div>
@@ -35,7 +35,7 @@ About = React.createClass
       <div className="ui segment">
         <h2 className="ui black header"> Creative teaching with MuSiika </h2>
 
-        
+
         <p>MuSiika is a tool that combines the music education with a development
         of pupils' programming skills.</p>
 
