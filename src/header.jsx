@@ -6,17 +6,17 @@ export default React.createClass({
     return <div id="topmenu" className="ui pointing menu">
       <div className="ui page grid">
         <div className="column" style={{paddingBottom: 0}}>
-          <div className="title item">
-            <b>MuSiika</b>
-          </div>
+          <Link className="title item" to="/">
+            <b>Musiika</b>
+          </Link>
           <Link className="item" to="/">
-            Home
+            Personal
+          </Link>
+          <Link className="item" to="/master">
+            Consert
           </Link>
           <Link className="item" to="/about">
             About
-          </Link>
-          <Link className="item" to="/master">
-            Master UI
           </Link>
         </div>
       </div>
