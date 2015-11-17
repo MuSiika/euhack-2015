@@ -5,18 +5,21 @@ ReactDOM = require('react-dom')
 reactRouter = require('react-router')
 Header = require('./header')
 CodeEditor = require('./CodeEditor')
+Documentation = require('./Documentation')
+Master = require('./Master')
 
 {Router, Route, IndexRoute} = reactRouter
 
 Home = React.createClass
   render: ->
-    <div className="column">
-      <div classNakme="ui segment">
-        <h1 className="ui header">
-          <div className="sub header">
-            <CodeEditor />
-          </div>
-        </h1>
+    <div className="ui vertically divided grid">
+      <div className="two column row">
+        <div className="column">
+          <CodeEditor />
+        </div>
+        <div className="column">
+          <Documentation />
+        </div>
       </div>
     </div>
 
@@ -26,9 +29,9 @@ About = React.createClass
       <div className="ui segment">
         <h4 className="ui black header"> Creative teaching with MuSiika </h4>
 
-
+        <span>
         MuSiika is a tool that combines the music education with a development
-        of pupils' eskills.
+        of pupils' eskills.<br>
 
         Why use Musiika?
         Musiika supports colaboration skills, creative thinking,
@@ -97,7 +100,7 @@ About = React.createClass
 
 
 
-
+        </span>
       </div>
     </div>
 
