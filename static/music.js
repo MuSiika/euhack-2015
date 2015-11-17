@@ -90,6 +90,10 @@ function __addNote(line, note){
     console.log(notes);
 }
 
+function addBreak(){
+    notes.push([]);
+}
+
 function addChord(chord){
     var broken = false;
     for(var i = 0; i < chord.length; i++){
@@ -148,8 +152,35 @@ function play(){
     preload();
     T.soundfont.setInstrument(instrument);
     for(var i = 0; i < notes.length; i++){
-        setTimeout(soundfontPlay, i*delay, notes[i]);
+        if(notes[i].length != 0){
+            setTimeout(soundfontPlay, i*delay, notes[i]);
+        }
     }
+}
+
+function resetFlatsAndSharps(){
+    isFlattedOrSharpened = {
+    'c-'    :   0,
+    'c'     :   0,
+    'c#'    :   0,
+    'd-'    :   0,
+    'd'     :   0,
+    'd#'    :   0,
+    'e-'    :   0,
+    'e'     :   0,
+    'f-'    :   0,
+    'f'     :   0,
+    'f#'    :   0,
+    'g-'    :   0,
+    'g'     :   0,
+    'g#'    :   0,
+    'a-'    :   0,
+    'a'     :   0,
+    'a#'    :   0,
+    'b-'    :   0,
+    'b'     :   0,
+    'b#'    :   0
+};
 }
 
 // Reset parametres
