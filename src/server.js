@@ -53,7 +53,10 @@ app.post('/save', function(req, res){
 });
 
 app.get('/load', function(req, res){
-  res.send('Hello world');
+
+  var debug = [ 'alert("Kissa;")', 'alert("Koira");' ];
+
+  res.send( debug );
 });
 
 server = http.createServer(app);

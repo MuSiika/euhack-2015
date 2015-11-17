@@ -6,7 +6,11 @@ export default React.createClass({
 
   update: function() {
     $.get( '/load', {}, function( res ) {
-      console.log( res );
+      // res is list of scripts, let's evaluate them
+      var scripts = [];
+      for( var i in res ) {
+        scripts[ i ] = eval( res[i] );
+      }
     } )
   },
 
