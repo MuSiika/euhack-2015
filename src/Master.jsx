@@ -18,13 +18,33 @@ export default React.createClass({
 
   update: function() {
     var self = this;
+
+
     $.get( '/load', {}, function( res ) {
       // res is list of scripts, let's evaluate them
 
-      var scripts = [];
       for( var i in res ) {
-        scripts[ i ] = eval( res[i] );
+        eval( res[i] );
       }
+
+      /*
+      var workers = [];
+      for( var i in res ) {
+        // Worker scripts can not use window :(
+        var worker = "onmessage = function(e) { importScripts('http://localhost:3000/music.js'); " + res[i] + " }";
+        console.log( worker );
+        // var worker = "onmessage = function(e) { postMessage('msg from worker'); }";
+        worker = new Blob([ worker ]);
+        worker = window.URL.createObjectURL( worker );
+        worker = new Worker( worker );
+        workers.push( worker );
+        console.log( i );
+      }
+      for( var i in workers ) {
+        console.log( workers[i] );
+        workers[ i ].postMessage( null );
+      }
+      */
 
       self.setState( { scripts : res });
     } )
