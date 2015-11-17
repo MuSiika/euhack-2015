@@ -26,6 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express["static"](dist));
 
+app.use(express.static('static'));
+
 app.set("port", process.env.PORT || 3000);
 
 // initialize database

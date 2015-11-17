@@ -14,7 +14,6 @@ Home = React.createClass
       <div classNakme="ui segment">
         <h1 className="ui header">
           <div className="sub header">
-            Moi
             <CodeEditor />
           </div>
         </h1>
