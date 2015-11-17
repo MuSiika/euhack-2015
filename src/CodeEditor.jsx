@@ -11,7 +11,7 @@ var $ = require('jquery') // needed for ajax
 export default React.createClass({
 
   getInitialState: function() {
-    return { source : 'alert("cats!");', changed : false };
+    return { source : 'addNote("C"); play(); reset();', changed : false };
   },
 
   code: function( text ) {
