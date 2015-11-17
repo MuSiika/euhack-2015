@@ -9,11 +9,12 @@ require('brace/theme/github')
 var $ = require('jquery') // needed for ajax
 
 const RaisedButton = require('material-ui/lib/raised-button');
+const CircularProgress = require('material-ui/lib/circular-progress');
 
 export default React.createClass({
 
   getInitialState: function() {
-    return { source : 'alert("cats!");', changed : false };
+    return { source : 'alert("cats!");', changed : false, submitting: "none" };
   },
 
   code: function( text ) {
@@ -30,8 +31,14 @@ export default React.createClass({
   },
 
   submit: function() {
+    this.setState( { submitting: "inline" } );
+    var self = this;
     $.post( '/save', { 'source' : this.state.source }, function( res ) {
       console.log( res );
+      // sort of hack
+      setTimeout( function() {
+        self.setState( { submitting: "none" } );
+      } , 1500 );
     } )
   },
 
@@ -43,6 +50,8 @@ export default React.createClass({
       <div style={{'margin-top': '10px'}}>
         <RaisedButton onClick={this.script} primary={true} label="Test" />
         <RaisedButton onClick={this.submit} disabled={this.state.changed} label="Ready" />
+        <CircularProgress mode="indeterminate" style={{display: this.state.submitting }} />
+
       </div>
     </div>
   }
