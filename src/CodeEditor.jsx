@@ -35,27 +35,27 @@ export default React.createClass({
 
   _source : function( __source ) {
 
-    var source = "setInstrument(" + this.state.instrument + ");\n";
+    var source = "";
     source += __source;
     source += "\nreset();";
-
-    console.log("kissa");
 
     // add linenumbers
     var s = source.split('\n');
 
-    var source2 = s[0];
+    var source2 = "";
 
-    console.log( s.length );
+    for( var i = 0; i < s.length; i++ ) {
 
-    for( var i = 1; i < s.length; i++ ) {
       var line = s[i];
-      console.log( line );
-      console.log( line.indexOf('addNote') );
+
       if( line.indexOf('addNote') >= 0 ) {
-        console.log( '__addNote(' + i + ',' );
-        line = line.replace('addNote(', '__addNote(' + i + ',' );
+        line = line.replace('addNote(', '__addNote(' + i + ',' + this.state.instrument + ',' );
       }
+
+      if( line.indexOf('addChord') >= 0 ) {
+        line = line.replace('addChord(', '__addChord(' + i + ',' + this.state.instrument + ',' );
+      }
+
       source2 += line;
     }
 
@@ -103,7 +103,7 @@ export default React.createClass({
       </div>
 
       <div style={{'marginTop': '10px'}}>
-        <AceEditor mode="javascript" value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
+        <AceEditor mode="javascript" style="width:800px" value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
       </div>
       <div style={{'marginTop': '10px'}}>
         <RaisedButton onClick={this.script} primary={true} label="Test" />

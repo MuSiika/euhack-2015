@@ -59,7 +59,6 @@ var isFlattedOrSharpened = {
 
 function convertNoteToNumber(note){
     note = note.toLowerCase();
-    console.log(note);
     var noteNumber = noteArray[note] + ((octave + 1)*12);
     console.log(noteNumber);
     noteNumber += isFlattedOrSharpened[note];
@@ -81,13 +80,25 @@ function addNote(note){
     console.log(notes);
 }
 
-function __addNote(line, note){
+function __addNote(line, instrument, note){
     note = convertNoteToNumber(note);
     if(note <= 127 && note >= 0){
         notes.push([[note], instrument]);
-        console.log("Playing line " + line );
     }
-    console.log(notes);
+}
+
+function __addChord(line, instrument, chord){
+    var broken = false;
+    for(var i = 0; i < chord.length; i++){
+        chord[i] = convertNoteToNumber(chord[i]);
+        if(chord[i] > 127 || chord[i] < 0){
+            broken = true;
+        }
+    }
+    if(!broken){
+        notes.push([chord, instrument]);
+    }
+
 }
 
 function addBreak(){
@@ -131,23 +142,45 @@ function setInstrument(newInstrument){
 
 // Play one note using soundfont
 function soundfontPlay(note){
-    console.log(note);
+    /*console.log(note);
     for(var i = 0; i < note[0].length; i++){
         T.soundfont.setInstrument(note[1]);
         T.soundfont.play(note[0][i]);
-    }
+    }*/
 }
 
 // Play the song
 function play(){
-    T.soundfont.setInstrument(instrument);
-    for(var i = 0; i < notes.length; i++){
-        for(var j = 0; j < notes[i][0].length; j++){
-            if(notes[i][0][j].length != 0){
-                setTimeout(soundfontPlay, i*delay, notes[i]);
-            }
+
+    // enclose function to ensure we only have local stuff
+    (function () {
+
+      console.log( notes );
+
+      var _notes = notes;
+      var _i = 0;
+
+      console.log( _notes );
+
+      var _interval = setInterval( function(){
+
+        var instrument = _notes[ _i ][1];
+        T.soundfont.setInstrument( instrument );
+
+        var sound = _notes[ _i ][0];
+
+        for(var i = 0; i < sound.length; i++){
+            T.soundfont.play( sound[i] );
         }
-    }
+
+        _i++;
+
+        if( _i >= _notes.length ) {
+          clearInterval( _interval );
+        }
+      }, delay );
+
+    })();
 }
 
 function resetFlatsAndSharps(){
