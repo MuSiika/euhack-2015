@@ -47,14 +47,6 @@ export default React.createClass({
             <ListDivider/>
 
             <CardText>
-            <h4>setDelay(newDelay)</h4>
-            <p><i>newDelay</i>: time as integer in milliseconds</p>
-            Set time waited between two notes.
-            </CardText>
-
-            <ListDivider/>
-
-            <CardText>
             <h4>flatten(note)</h4>
             <p><i>note</i>: a string representing a singe note</p>
             Flatter all added notes that are the same as the note given as parameter after calling the function.
