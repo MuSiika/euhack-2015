@@ -84,9 +84,21 @@ function __addNote(line, instrument, note){
     note = convertNoteToNumber(note);
     if(note <= 127 && note >= 0){
         notes.push([[note], instrument]);
-        console.log("Playing line " + line );
     }
-    console.log(notes);
+}
+
+function __addChord(line, instrument, chord){
+    var broken = false;
+    for(var i = 0; i < chord.length; i++){
+        chord[i] = convertNoteToNumber(chord[i]);
+        if(chord[i] > 127 || chord[i] < 0){
+            broken = true;
+        }
+    }
+    if(!broken){
+        notes.push([chord, instrument]);
+    }
+
 }
 
 function addBreak(){
@@ -155,8 +167,11 @@ function play(){
         var instrument = _notes[ _i ][1];
         T.soundfont.setInstrument( instrument );
 
-        var sound = _notes[ _i ][0][0];
-        T.soundfont.play( sound );
+        var sound = _notes[ _i ][0];
+
+        for(var i = 0; i < sound.length; i++){
+            T.soundfont.play( sound[i] );
+        }
 
         _i++;
 
