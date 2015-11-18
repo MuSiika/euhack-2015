@@ -96,6 +96,10 @@ export default React.createClass({
 
   render: function() {
 
+    var editorStyle = {
+      width: 800+'px !important'
+    };
+
     return <div>
 
       <div>
@@ -103,7 +107,7 @@ export default React.createClass({
       </div>
 
       <div style={{'marginTop': '10px'}}>
-        <AceEditor mode="javascript" style="width:800px" value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
+        <AceEditor mode="javascript" style={editorStyle} value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
       </div>
       <div style={{'marginTop': '10px'}}>
         <RaisedButton onClick={this.script} primary={true} label="Test" />
