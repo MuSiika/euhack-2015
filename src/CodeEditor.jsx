@@ -103,7 +103,7 @@ export default React.createClass({
       </div>
 
       <div style={{'marginTop': '10px'}}>
-        <AceEditor mode="javascript" value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
+        <AceEditor mode="javascript" style="width:800px" value={this.state.source} onChange={this.code} theme="github" editorProps={{$blockScrolling: true}} />
       </div>
       <div style={{'marginTop': '10px'}}>
         <RaisedButton onClick={this.script} primary={true} label="Test" />
