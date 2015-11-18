@@ -102,7 +102,7 @@ function __addChord(line, instrument, chord){
 }
 
 function addBreak(){
-    notes.push([]);
+    notes.push([[], 0]);
 }
 
 function addChord(chord){
